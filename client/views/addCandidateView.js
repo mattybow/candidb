@@ -26,7 +26,3 @@ Template.addCandidate.events({
 		});
 	}.bind(this)
 });
-
-function clearInputs(){
-	
-}
