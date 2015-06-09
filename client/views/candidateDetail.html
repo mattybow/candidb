@@ -1,0 +1,55 @@
+<template name="candidateDetail">
+	<div class="abs-container" id="candidate-detail">
+		<div class="view-header">
+			<h1>{{firstName}}&nbsp;{{lastName}}</h1>
+		</div>
+		<div class="url-form-holder">
+			<form action="#">
+				{{> hoshiInput 'enter URL'}}
+				<button class="circle-button" id="addUrl"><span class="icon-plus"></span></button>
+			</form>
+		</div>
+		{{#if hasPreview}}
+		<div class="preview">
+			<div class="preview-logo">
+				{{#if previewLogo}}
+					<img src="/images/{{previewLogo}}" alt="">
+				{{else}}
+					<div class="logo-placeholder">
+						<div class="preview-initial">{{previewInitial}}</div>
+					</div>
+				{{/if}}
+			</div>
+			<div class="preview-metadata">
+				<div class="preview-title">{{{previewTitle}}}</div>
+				<div class="preview-description">{{{previewDescription}}}</div>
+				<div class="preview-date">{{{previewDate}}}</div>
+			</div>
+		</div>
+		{{/if}}
+		<div class="link-results">
+			<ul>
+				{{#each queryLinks fecid}}
+					<li>
+						<a href="{{url}}">
+							<span class="link-image">
+								{{#if image}}
+									<img src="{{image}}" alt="">
+								{{/if}}
+							</span>
+							<span class="link-text">
+								<div class="link-title">{{{title}}}</div>
+								<div class="link-description">{{{description}}}</div>
+							</span>
+						</a>
+						<button class="circle-button link-controls">
+							<span class="link-remove icon-minus"></span>
+						</button>
+
+					</li>
+				{{/each}}
+			</ul>
+		</div>
+		
+	</div>
+</template>

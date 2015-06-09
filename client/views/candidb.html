@@ -1,0 +1,20 @@
+<head>
+  <title>candidb</title>
+</head>
+
+<template name="dash">
+	<div id="candidate-overview" class="abs-container">
+		<div class="view-header">
+			<h1>Candidates</h1>
+			<button class="circle-button" id="add-new-candidate">
+				<span class="icon-plus"></span>
+			</button>
+		</div>
+		<div id="dash-cards">
+			{{#each getCandidates}}
+				{{> candidateCard}}
+			{{/each}}
+		</div>
+		{{> addCandidate}}
+	</div>
+</template>

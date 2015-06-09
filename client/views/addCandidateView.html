@@ -1,0 +1,23 @@
+<template name="addCandidate">
+	<div id="addCandidateContainer" class="{{showView}}">
+		<div id="addCandidateView" class="unknown">
+			<div class="addCandidateTopBar">
+				<div class="left-content">
+					<h2>Add Candidate</h2>
+				</div>
+				<div class="right-content">
+					<button class="no-border-button" id="save-add-candidate">save</button>
+					<button class="no-border-button" id="close-add-candidate">cancel</button>
+				</div>
+			</div>
+			<div class="container">
+				<form action="">
+					{{#each fields}}
+						{{> hoshiInput}}
+					{{/each}}
+				</form>
+			</div>
+		</div>
+	</div>
+	
+</template>
