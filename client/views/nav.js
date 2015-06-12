@@ -32,6 +32,8 @@ Template.nav.events({
   },
   'click [data-login]':function(e,el){
     e.preventDefault();
-    Meteor.loginWithGithub();
+    Meteor.loginWithGithub({redirectUrl:"https://candidb.herokuapp.com/_oauth/github"},function (err) {
+      if (err) alert(JSON.stringify(err));
+    });
   }
-})
+});

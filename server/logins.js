@@ -10,3 +10,5 @@ Accounts.validateLoginAttempt(function(user){
 	}
 	return false;
 });
+
+console.log(Meteor.absoluteUrl());
