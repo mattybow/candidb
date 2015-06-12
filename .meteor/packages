@@ -13,7 +13,7 @@ http
 mrt:cheerio
 momentjs:moment
 reactive-var
-accounts-github
 accounts-ui-unstyled
 chrismbeckett:toastr
 edgee:slingshot
+accounts-github
