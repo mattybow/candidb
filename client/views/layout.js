@@ -26,24 +26,4 @@ Template.layout.onRendered(function(){
   };
 });
 
-var viewMap = {
-  candidate:'candidates'
-}
-
-Template.layout.helpers({
-  previousView:function(){
-    var curView = Session.get('curView');
-    if (!curView){
-      return 'candidb'
-    } else {
-      return viewMap[curView];
-    }
-  },
-  isMobile:function(){
-    if('ontouchstart' in window){
-      return true;
-    }
-    return false;
-  }
-})
 

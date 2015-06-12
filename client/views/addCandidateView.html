@@ -6,17 +6,19 @@
 					<h2>Add Candidate</h2>
 				</div>
 				<div class="right-content">
-					<button class="no-border-button" id="save-add-candidate">save</button>
+					<button class="no-border-button {{saveStatus}}" id="save-add-candidate">{{saveStatus}}</button>
 					<button class="no-border-button" id="close-add-candidate">cancel</button>
 				</div>
 			</div>
-			<div class="container">
+			<div class="add-candidate-form-container">
 				<form action="">
+					{{> imgUploader }}
 					{{#each fields}}
 						{{> hoshiInput}}
 					{{/each}}
 				</form>
 			</div>
+			{{> spinnerOverlay reactiveSpinnerClass }}
 		</div>
 	</div>
 	

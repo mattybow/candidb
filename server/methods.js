@@ -18,7 +18,6 @@ Meteor.methods({
 		if(exists){
 			return {ok:false,msg:'candidate already exists'};
 		} else {
-			var errMsg,id;
 			var insertSync = Meteor.wrapAsync(Candidates.insert,Candidates);
 			try{
 				var result = insertSync(data);
@@ -29,6 +28,24 @@ Meteor.methods({
 				return {ok:false,err:err};
 			}
 			
+		}
+	},
+	addMediaLink:function(data){
+		var username = Meteor.user().services.github.username;
+		if(isValidUser(username)){
+			var insertSync = Meteor.wrapAsync(MediaLinks.insert,MediaLinks);
+			try{
+				var result = insertSync(data);
+				console.log('inserted new article');
+				return {ok:true};
+			}
+			catch(err){
+				throw new Meteor.Error("DB ERROR", err);
+				return {ok:false,err:err};
+			}
+		} else {
+			throw new Meteor.Error("UNAUTHORIZED", "You are not authorized to perform this action");
+			return {ok:false,err:'UNAUTHORIZED'};
 		}
 	}
 })

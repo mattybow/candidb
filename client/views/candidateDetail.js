@@ -1,6 +1,9 @@
 var domainRegex = /(http(s)?:\/\/)?([\w\-]+\.)?([\w\-]+\.(com|org|net|io|gov|ly|me|le))/i;
 
-Template.candidateDetail.onRendered(function(){
+Template.candidateDetail.onCreated(function(){
+	this.subscribe('allCandidates');
+	this.subscribe('allLinks');
+	this.subscribe('allSources');
 });
 
 Template.candidateDetail.events({
@@ -58,8 +61,12 @@ Template.candidateDetail.events({
 	},
 	'click #addUrl':function(e){
 		e.preventDefault();
+		if(!Meteor.user()){
+			toastr.error('login to perform this transaction','TRANSACTION DENIED');
+			return false;
+		}
 		if(Session.get('previewTitle')){
-			MediaLinks.insert({
+			Meteor.call('addMediaLink',{
 				fecid:UI.getData().fecid,
 				url:Session.get('previewUrl'),
 				title:Session.get('previewTitle'),
@@ -67,10 +74,14 @@ Template.candidateDetail.events({
 				date:Session.get('previewJsDate'),
 				tags:Session.get('tags'),
 				image:Session.get('image')
+			},function(err,res){
+				if(err){
+					toastr.error(err.reason, err.error);
+				}
 			});
 		}
 		clearSessionVals();
-		$('input').val('');
+		$('input').val('').change();
 	}
 });
 
@@ -96,6 +107,9 @@ Template.candidateDetail.helpers({
 	queryLinks:function(id){
 		console.log(id);
 		return MediaLinks.find({fecid:id},{sort:{date:-1}});
+	},
+	canAdd:function(){
+		return Session.get('previewTitle') ? '' : 'disabled'
 	}
 });
 

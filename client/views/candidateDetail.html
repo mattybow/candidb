@@ -6,7 +6,7 @@
 		<div class="url-form-holder">
 			<form action="#">
 				{{> hoshiInput 'enter URL'}}
-				<button class="circle-button" id="addUrl"><span class="icon-plus"></span></button>
+				<button class="circle-button {{canAdd}}" id="addUrl"><span class="icon-plus"></span></button>
 			</form>
 		</div>
 		{{#if hasPreview}}

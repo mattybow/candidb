@@ -2,6 +2,10 @@ if (Meteor.isClient) {
   // counter starts at 0
   Session.setDefault('counter', 0);
 
+  Template.dash.onCreated(function(){
+    this.subscribe('allCandidates');
+  });
+
   Template.dash.helpers({
     getCandidates: function () {
       return Candidates.find({});

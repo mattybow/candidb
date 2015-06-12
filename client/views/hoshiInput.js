@@ -1,9 +1,9 @@
-Template.hoshiInput.created=function(){
+Template.hoshiInput.onCreated(function(){
 	this.isFilled = new ReactiveVar(false);
-}
+});
 
 Template.hoshiInput.onRendered(function(){
-})
+});
 
 Template.hoshiInput.events({
 	'keyup input, change input':function(e){

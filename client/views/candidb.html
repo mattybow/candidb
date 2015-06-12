@@ -11,9 +11,13 @@
 			</button>
 		</div>
 		<div id="dash-cards">
-			{{#each getCandidates}}
-				{{> candidateCard}}
-			{{/each}}
+			{{#if Template.subscriptionsReady}}
+				{{#each getCandidates}}
+					{{> candidateCard}}
+				{{/each}}
+			{{else}}
+				<h4>Loading...</h4>
+			{{/if}}
 		</div>
 		{{> addCandidate}}
 	</div>

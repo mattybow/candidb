@@ -1,0 +1,29 @@
+<template name="nav">
+	<nav>
+		<div class="nav-inner">
+			<div class="previousView">
+				<div class="{{previousView}}">
+					{{previousView}}
+				</div>
+			</div>
+			<div class="login-buttons">
+				{{#if currentUser}}
+					<div class="login-ctrls">
+						<div class="logged-in-username">{{currentUser.profile.name}}</div>
+						<div id="logout-button">
+							<a href="#" data-logout="">logout</a>
+						</div>
+					</div>
+				{{else}}
+					{{#if loggingIn}}
+						<div id="logging-in">logging in...</div>
+					{{else}}
+						<div class="login-button">
+							<a href="#" data-login=""><span class="icon-github-circled"></span>&nbsp;login</a>
+						</div>
+					{{/if}}
+				{{/if}}
+			</div>
+		</div>
+	</nav>
+</template>
