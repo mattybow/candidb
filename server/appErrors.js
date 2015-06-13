@@ -1,0 +1,1 @@
+AppErrors = new Mongo.Collection('appErrors');
