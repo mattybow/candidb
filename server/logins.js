@@ -1,11 +1,11 @@
-WHITE_LIST = ['mattybow','bmagnantb'];
+WHITE_LIST = ['Dmthigh','bmagnantb'];
 isValidUser = function(username){
 	return WHITE_LIST.indexOf(username) >= 0;
 };
 Accounts.validateLoginAttempt(function(user){
 	console.log(user);
 	if(user.user){
-		var username = user.user.services.github.username;
+		var username = user.user.services.twitter.username;
 		return isValidUser(username);
 	}
 	return false;

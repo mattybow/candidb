@@ -32,9 +32,7 @@ Template.nav.events({
   },
   'click [data-login]':function(e,el){
     e.preventDefault();
-    Meteor.loginWithGithub({},function (err) {
-      if (err) alert(JSON.stringify(err));
-    });
+    Meteor.loginWithTwitter();
   }
 });
 
