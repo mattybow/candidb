@@ -24,7 +24,6 @@ Template.nav.helpers({
     return false;
   },
   loginService:function(){
-    console.log(Meteor.settings);
     if(Meteor.settings && Meteor.settings.public.environment === 'dev'){
       return 'github-circled';
     } else {

@@ -5,11 +5,11 @@ isValidUser = function(username){
 Accounts.validateLoginAttempt(function(user){
 	if(user.user){
 		var username;
-		AppErrors.insert({data:JSON.stringify(user)});
+		//AppErrors.insert({data:JSON.stringify(user)});
 		if(Meteor.settings && Meteor.settings.public.environment === 'dev'){
 			username = user.user.services.github.username;
 		} else {
-			username = user.user.services.twitter.username;
+			username = user.user.services.twitter.screenName;
 		}
 		return isValidUser(username);
 	}
