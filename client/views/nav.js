@@ -22,6 +22,14 @@ Template.nav.helpers({
       return true;
     }
     return false;
+  },
+  loginService:function(){
+    console.log(Meteor.settings);
+    if(Meteor.settings && Meteor.settings.public.environment === 'dev'){
+      return 'github-circled';
+    } else {
+      return 'twitter';
+    }
   }
 });
 
@@ -32,7 +40,11 @@ Template.nav.events({
   },
   'click [data-login]':function(e,el){
     e.preventDefault();
-    Meteor.loginWithTwitter();
+    if(Meteor.settings && Meteor.settings.public.environment === 'dev'){
+      Meteor.loginWithGithub();
+    } else {
+      Meteor.loginWithTwitter();
+    }
   }
 });
 
